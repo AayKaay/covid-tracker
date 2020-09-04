@@ -1,15 +1,15 @@
 import React from 'react';
-import {Button} from '@material-ui/core'
+import Header from './components/Header'
+import MainGrid from './components/MainGrid'
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      Learning react again
-      <Button primary>
-        asd vb
-      </Button>
-    </div>
+    <>
+    <Header/>
+    <MainGrid/>
+    </>
   );
 }
 
