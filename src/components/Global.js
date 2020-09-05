@@ -2,11 +2,12 @@ import React,{ useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import NumberFormat from 'react-number-format';
 
 const useTypoStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
-        maxWidth: 500,
+        maxWidth: '100',
       },
 }));
 
@@ -41,7 +42,10 @@ export default function SimplePaper() {
 
       }
     getData()
-  },[])  
+  },[]) 
+  if (update){
+      return(<h1>Loading data</h1>)
+  }
 
   return (
     <div className={classes.root}>
@@ -49,7 +53,8 @@ export default function SimplePaper() {
       <Paper elevation={3}>
         <div className={typoClasses.root}>
             <Typography variant="h4" style={{fontweight:'bolder'}}>
-                {globalData && globalData.Global && globalData.Global.TotalConfirmed}
+            <NumberFormat value={globalData && globalData.Global && globalData.Global.TotalConfirmed} displayType={'text'} thousandSeparator={true}  />
+                
             </Typography>
             <Typography variant="subtitle2" gutterBottom>
                 Global Cases
@@ -60,7 +65,7 @@ export default function SimplePaper() {
       <Paper elevation={3}>
         <div className={typoClasses.root}>
             <Typography variant="h4" style={{fontweight:'bolder', color:'Purple'}}>
-            {globalData && globalData.Global && globalData.Global.NewConfirmed}
+                <NumberFormat value={globalData && globalData.Global && globalData.Global.NewConfirmed} displayType={'text'} thousandSeparator={true}  />
             </Typography>
             <Typography variant="subtitle2" gutterBottom>
                 Active Cases
@@ -70,9 +75,8 @@ export default function SimplePaper() {
        <Paper elevation={3}>
          <div className={typoClasses.root}>
             <Typography variant="h4" style={{fontweight:'bolder', color:'green'}}>
-                {globalData && globalData.Global && globalData.Global.TotalRecovered}
-
-            </Typography>
+                <NumberFormat value={globalData && globalData.Global && globalData.Global.TotalRecovered} displayType={'text'} thousandSeparator={true}  />
+              </Typography>
             <Typography variant="subtitle2" gutterBottom>
                 Recovered
             </Typography>
